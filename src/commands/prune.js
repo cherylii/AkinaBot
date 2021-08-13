@@ -16,7 +16,7 @@ module.exports = {
 	cooldown: 5,
 	guildOnly: true,
 	execute(client, message, args, currency, category, distube, tmpMsg) {
-		if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES, Permissions.FLAGS.ADMINISTRATOR) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have the permissions to prune messages\nRequires `MANAGE\_MESSAGES` or `ADMINISTRATOR`");
+		if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have the permissions to prune messages\nRequires `MANAGE\_MESSAGES`");
 
 		const amount = parseInt(args[0]) + 1;
 

@@ -33,7 +33,7 @@ module.exports = {
             return date + (31 == date || 21 == date || 1 == date ? "st" : 22 == date || 2 == date ? "nd" : 23 == date || 3 == date ? "rd" : "th")
         }
         if (args[iPos] && args[iPos] == '-i' || args[iPos] == '-info') {
-            if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES, Permissions.FLAGS.ADMINISTRATOR) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have the permissions to view detailed userinfo\nRequires `MANAGE\_ROLES` or `ADMINISTRATOR`");
+            if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have the permissions to view detailed userinfo\nRequires `MANAGE\_ROLES`");
             let permissionOutput = targetUser.id == message.guild.ownerId ? '`OWNER` - Has every permission and is non-managable' : targetMember.permissions.has(Permissions.FLAGS.ADMINISTRATOR) ? '`ADMINISTRATOR` - Has every permission' : `\`${targetMember.permissions.toArray().join('` `')}\``;
             const userInfoEmbed = new Discord.MessageEmbed()
                 .setColor(colorHex)

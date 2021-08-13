@@ -31,15 +31,15 @@ module.exports = {
         //role mention
         if (allArgs.length && !(allArgs.search(/mention:<@&\d{18}>/) == -1)) { mentionedOutput = `${allArgs.slice(allArgs.search(/<@&\d{18}>/), allArgs.search(/<@&\d{18}>/) + 22)}\n`; messageContent = messageContent.slice(30).trim(); }
         //everyone and here mention
-        if (allArgs.length && !(allArgs.search(/mention:@everyone/) == -1)) { if (!message.member.permissions.has(Permissions.FLAGS.MENTION_EVERYONE, Permissions.FLAGS.ADMINISTRATOR) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to mention everyone!\nRequires `MENTION\_EVERYONE` or `ADMINISTRATOR`"); mentionedOutput = `@everyone\n`; messageContent = messageContent.slice(17).trim(); }
-        if (allArgs.length && !(allArgs.search(/mention:@here/) == -1)) { if (!message.member.permissions.has(Permissions.FLAGS.MENTION_EVERYONE, Permissions.FLAGS.ADMINISTRATOR) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to mention here!\nRequires `MENTION\_EVERYONE` or `ADMINISTRATOR`"); mentionedOutput = `@here\n`; messageContent = messageContent.slice(13).trim(); }
+        if (allArgs.length && !(allArgs.search(/mention:@everyone/) == -1)) { if (!message.member.permissions.has(Permissions.FLAGS.MENTION_EVERYONE, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to mention everyone!\nRequires `MENTION\_EVERYONE`"); mentionedOutput = `@everyone\n`; messageContent = messageContent.slice(17).trim(); }
+        if (allArgs.length && !(allArgs.search(/mention:@here/) == -1)) { if (!message.member.permissions.has(Permissions.FLAGS.MENTION_EVERYONE, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to mention here!\nRequires `MENTION\_EVERYONE`"); mentionedOutput = `@here\n`; messageContent = messageContent.slice(13).trim(); }
 
         if (allArgs.length && !(allArgs.search(/in:<#\d{18}>/) == -1)) {
             const mentionedChannelID = allArgs.slice(allArgs.search(/<#\d{18}>/), allArgs.search(/<#\d{18}>/) + 21).replace(/[\\<>@#&!]/g, "");
             sentChannel = mentionedChannelID
             messageContent = messageContent.slice(24).trim()
             if (!(client.channels.cache.get(sentChannel).guild.id == message.guild.id)) return message.channel.send(":x: I can only send messages within the same server!");
-            if ((!client.channels.cache.get(sentChannel).permissionsFor(message.member).has("SEND_MESSAGES", "ADMINISTRATOR") || !client.channels.cache.get(sentChannel).permissionsFor(message.member).has("VIEW_CHANNEL", "ADMINISTRATOR")) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permission to send messages to that channel!\nRequires `VIEW\_CHANNEL` and `SEND\_MESSAGES` or `ADMINISTRATOR`");
+            if ((!client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.SEND_MESSAGES, true) || !client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.VIEW_CHANNEL, true)) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permission to send messages to that channel!\nRequires `VIEW\_CHANNEL` and `SEND\_MESSAGES`");
         }
         
         // if (allArgs.length && !(allArgs.search(/embed{.*}   /) == -1)) {

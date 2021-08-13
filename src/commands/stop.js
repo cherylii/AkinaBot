@@ -27,8 +27,8 @@ module.exports = {
                 if (!queue) return message.channel.send(":x: There are no songs in queue!");
                 if (!message.guild.me.voice.channel) return message.channel.send(":x: **I am not in a voice channel**");
                 if (!initMember.voice.channel) return stopQueue()
-                if ((message.guild.me.voice.channel.id !== initMember.voice.channel.id) || (!message.member.permissions.has(Permissions.FLAGS.MOVE_MEMBERS, Permissions.FLAGS.ADMINISTRATOR) && message.member != message.guild.ownerId && message.member.id != initMember.id)) 
-                return message.channel.send(":x: **You do not have permissions to stop the queue.**\nRequires `MOVE\_MEMBERS` or `ADMINISTRATOR`\n*Alternatively, only the queue initialiser can stop the queue, or anyone else if the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
+                if ((message.guild.me.voice.channel.id !== initMember.voice.channel.id) || (!message.member.permissions.has(Permissions.FLAGS.MOVE_MEMBERS, true) && message.member != message.guild.ownerId && message.member.id != initMember.id)) 
+                return message.channel.send(":x: **You do not have permissions to stop the queue.**\nRequires `MOVE\_MEMBERS`\n*Alternatively, only the queue initialiser can stop the queue, or anyone else if the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
                 stopQueue()
             })
     }

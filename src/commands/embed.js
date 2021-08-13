@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { Permissions } = require('discord.js')
 const { prefix } = require('../config.json');
 module.exports = {
     name: "embed",
@@ -74,7 +75,8 @@ module.exports = {
             sentChannel = mentionedChannelID
             messageContent = messageContent.slice(24).trim()
             if (!(client.channels.cache.get(sentChannel).guild.id == message.guild.id)) return message.channel.send(":x: I can only send messages within the same server!");
-            if ((!client.channels.cache.get(sentChannel).permissionsFor(message.member).has("SEND_MESSAGES", "ADMINISTRATOR") || !client.channels.cache.get(sentChannel).permissionsFor(message.member).has("VIEW_CHANNEL", "ADMINISTRATOR")) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permission to send messages to that channel!\nRequires `VIEW\_CHANNEL` and `SEND\_MESSAGES` or `ADMINISTRATOR`");
+            if ((!client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.SEND_MESSAGES, true) || !client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.VIEW_CHANNEL, true)) && message.member != message.guild.ownerId) 
+            return message.channel.send(":x: You do not have permission to send messages to that channel!\nRequires `VIEW\_CHANNEL` and `SEND\_MESSAGES`");
         }
 
         if (allArgs.length) {

@@ -94,7 +94,7 @@ module.exports = {
                         if (Number(message.content) > queue.songs.length) return message.channel.send(":x: **That song number is not in queue**");
                         if (!initMember.voice.channel || (queue.songs[Number(message.content)].user.id == message.member.id));
                         else if ((memberMessage.guild.me.voice.channel.id !== initMember.voice.channel.id) || (!memberMessage.member.permissions.has(Permissions.FLAGS.MOVE_MEMBERS, true) && memberMessage.member != memberMessage.guild.ownerId && memberMessage.member.id != initMember.id))
-                            return memberMessage.channel.send(":x: **You do not have permissions to remove the song.**\nRequires `MOVE\_MEMBERS` or `ADMINISTRATOR`\n*Alternatively, only the queue initialiser and song queuer can remove the song, or anyone else after the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
+                            return memberMessage.channel.send(":x: **You do not have permissions to remove the song.**\nRequires `MOVE\_MEMBERS`\n*Alternatively, only the queue initialiser and song queuer can remove the song, or anyone else after the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
                         removeSong(Number(message.content))
                     })
             })

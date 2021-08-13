@@ -32,7 +32,7 @@ module.exports = {
                 if (!message.guild.me.voice.channel) return message.channel.send(":x: **I am not in a voice channel**");
                 if (!initMember.voice.channel || (queue.songs[0].user.id == message.member.id)) return skipSong()
                 if ((message.guild.me.voice.channel.id !== initMember.voice.channel.id) || (!message.member.permissions.has(Permissions.FLAGS.MOVE_MEMBERS, true) && message.member != message.guild.ownerId && message.member.id != initMember.id)) 
-                return message.channel.send(":x: **You do not have permissions to skip the song.**\nRequires `MOVE\_MEMBERS` or `ADMINISTRATOR`\n*Alternatively, only the queue initialiser or song queuer can skip the song, or anyone else after the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
+                return message.channel.send(":x: **You do not have permissions to skip the song.**\nRequires `MOVE\_MEMBERS`\n*Alternatively, only the queue initialiser or song queuer can skip the song, or anyone else after the queue initialiser has left.*").then(m => setTimeout(() => { m.delete() }, 30000))
                 skipSong()
             })
     }
