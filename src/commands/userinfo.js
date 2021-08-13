@@ -15,7 +15,6 @@ module.exports = {
         let targetMember = message.mentions.members.first() || message.member;
         let targetUser = targetMember.user;
         const iPos = message.mentions.members.first() ? '1' : '0'
-        let embedOutput = []
 
         function formatDate(date) {
             var hours = date.getUTCHours()

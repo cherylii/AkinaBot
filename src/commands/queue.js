@@ -12,7 +12,7 @@ const forwardButton = new Discord.MessageButton({
     style: 'SECONDARY',
     label: 'Next',
     emoji: '➡️',
-    customId: 'forward'
+    customId: 'next'
 })
 
 module.exports = {

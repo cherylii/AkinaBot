@@ -42,15 +42,6 @@ module.exports = {
             if ((!client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.SEND_MESSAGES, true) || !client.channels.cache.get(sentChannel).permissionsFor(message.member).has(Permissions.FLAGS.VIEW_CHANNEL, true)) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permission to send messages to that channel!\nRequires `VIEW\_CHANNEL` and `SEND\_MESSAGES`");
         }
         
-        // if (allArgs.length && !(allArgs.search(/embed{.*}   /) == -1)) {
-        //     _intermediateOptions = allArgs.slice(allArgs.search(/embed{/),)
-        //     embedOptions = _intermediateOptions.slice(6, _intermediateOptions.search(/}/))
-        //     messageContent = messageContent.slice(embedOptions.length + 9)
-        //     console.log(embedOptions)
-        // }
-
-        //if (allArgs.length && !(allArgs.search(/after:\d{1,2}[hms]>/) == -1)) {}
-
         if (mentionedOutput.length + messageContent.length)
             client.channels.cache.get(sentChannel).send(`${mentionedOutput}${messageContent}`)
                 .catch(err => { console.log(err); return message.channel.send(":x: I-I couldn't find the channel, or I was lacking permissions"); });

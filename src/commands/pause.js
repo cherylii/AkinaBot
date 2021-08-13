@@ -21,7 +21,7 @@ module.exports = {
             .setDescription(`${queue.paused ? `:pause_button: The queue has been **paused**` : `:arrow_forward: The queue has been **resumed**`}\n**[${queue.songs[0].name}](${queue.songs[0].url})** (${queue.songs[0].formattedDuration || "Infinite"})\n:headphones: **Queued by:** ${queue.songs[0].user.tag} :headphones: **Playing in:** ${message.guild.me.voice.channel.name || "No channel :("}`)
         message.channel.send({ embeds: [pauseEmbed] })
             .then((m) => {
-                if (queue.pause) return tmpMsg.set(m.guild.id, m.id)
+                if (queue.paused) return tmpMsg.set(m.guild.id, m.id)
                 else {
                     client.guilds.cache.get(m.guild.id).channels.cache.get(m.channel.id).messages.fetch(tmpMsg.get(m.guild.id)).then(msg => msg.delete())
                     setTimeout(() => {

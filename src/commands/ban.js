@@ -5,14 +5,14 @@ module.exports = {
     name: "ban",
     aliases: [],
     description: "Bans a member from the server, rule violators arn't welcome.",
-    usage: {"[\@user]" : "User that you want to ban"},
+    usage: { "[\@user]": "User that you want to ban" },
     subcommands: {},
     category: "Moderation",
     args: true,
     cooldown: 5,
     guildOnly: true,
     execute(client, message, args, currency, category, distube, tmpMsg) {
-        
+
         const banArgs = message.content.slice(prefix.length).trim().split(/ +/); //args = array
         const banName = banArgs.shift().toLowerCase();  //messy code
         const banPlayer = banArgs.shift().toLowerCase();
@@ -45,7 +45,7 @@ module.exports = {
             })
             .catch(error => {
                 message.channel.send(":x: I-I failed to do that... Do I have the permissions?");
-                console.error("I-I failed to ban\n",error);
+                console.error("I-I failed to ban\n", error);
             });
 
     }

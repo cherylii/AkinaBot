@@ -26,7 +26,7 @@ module.exports = {
                 .setColor(colorHex)
                 .setAuthor(`Akina's Sparkly Help!`, message.author.displayAvatarURL({ dynamic: true }))
                 .setDescription(`Here is what I can do for you!\nDo \`${prefix}help <command>\` to learn more about a specific command!\nWrap items in "quotes" if it has spaces`)
-                .setFooter('Thanks for keeping akina ❤️', message.guild.iconURL());
+                .setFooter('Thanks for being with me! ❤️', message.guild.iconURL());
 
             for (const item of category) {
                 let category = item[0];

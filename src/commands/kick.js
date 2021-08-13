@@ -5,7 +5,7 @@ module.exports = {
     name: "kick",
     aliases: [],
     description: "Kicks a member from the server, A good warning for them.",
-    usage: {"[\@user]" : "User that you want to kick"},
+    usage: { "[\@user]": "User that you want to kick" },
     subcommands: {},
     category: "Moderation",
     args: true,
@@ -43,7 +43,7 @@ module.exports = {
             })
             .catch(error => {
                 message.channel.send(":x: I-I failed to do that... Do I have the permissions?");
-                console.error("I-I failed to kick\n",error);
+                console.error("I-I failed to kick\n", error);
             });
 
     }
