@@ -1,3 +1,9 @@
-/.vscode
-/src/config.json
+#utilities
+.vscode
+
+#dependencies
 src/node_modules/
+
+#secrets
+src/config.json
+src/database/model/databaseConfig.js
