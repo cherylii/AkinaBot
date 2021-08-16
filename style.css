@@ -1,8 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
-
-*{
-    font-family: Quicksand ;
+* {
+    font-family: Quicksand;
 }
 
 .blue {
@@ -67,7 +65,6 @@
     position: relative;
 }
 
-
 .main {
     min-width: 600px;
     height: 100vh;
@@ -84,7 +81,20 @@
     text-decoration: none;
 }
 
-.tech-stack:hover{
+.tech-stack:hover {
     background-color: lightblue;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Firefox */
+}
