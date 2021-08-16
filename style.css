@@ -1,0 +1,53 @@
+.blue {
+    color: #82caed;
+}
+
+.red {
+    color: #ed8294;
+}
+
+.orange {
+    color: #edda8b;
+}
+
+.yellow {
+    color: #edda82;
+}
+.bg-blue {
+    background-color: #82caed;
+}
+
+.bg-red {
+    background-color: #ed8294;
+}
+
+.bg-orange {
+    background-color: #edda8b;
+}
+
+.bg-yellow {
+    background-color: #edda82;
+}
+
+.black {
+    color: #000505;
+}
+
+.white {
+    color: #FEFCFD;
+}
+
+.bg-black {
+    background-color: #000505;
+}
+
+.bg-white {
+    background-color: #FEFCFD;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
