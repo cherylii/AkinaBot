@@ -16,7 +16,9 @@
 <body class='bg-blue'>
     <div class="container main shadow shadow-md border rounded-2 p-0">
         <section class='bg-red'>
-            <ul class="nav row justify-content-md-between align-content-end">
+
+            <!-- Desktop Navbar -->
+            <ul class="nav d-none d-md-flex justify-content-md-end align-content-end">
                 <div class="col-md-6">
                     <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Home</a></li>
                 </div>
@@ -24,7 +26,13 @@
                     <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='./html/docs.html'>Docs</a></li>
                     <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>About</a></li>
                 </div>
-        
+                
+            </ul>
+            <!-- Mobile navbar -->
+            <ul class="nav d-md-none d-flex justify-content-md-center align-content-center">
+                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Home</a></li>
+                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='./html/docs.html'>Docs</a></li>
+                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>About</a></li>
             </ul>
         </section>
 
