@@ -81,8 +81,8 @@
     text-decoration: none;
 }
 
-.tech-stack:hover {
-    background-color: lightblue;
+a:hover {
+    color: #82caed;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -97,4 +97,8 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     /* Firefox */
+}
+
+.medium {
+    font-family: Quicksand Medium;
 }
