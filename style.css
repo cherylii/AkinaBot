@@ -1,4 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+*{
+    font-family: Quicksand ;
+}
+
 .blue {
     color: #82caed;
 }
@@ -14,6 +20,7 @@
 .yellow {
     color: #edda82;
 }
+
 .bg-blue {
     background-color: #82caed;
 }
@@ -50,13 +57,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-.main{
+.start-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+}
+
+a:hover {
+    color: #82caed;
+}
+
+.main {
     min-width: 600px;
 }
 
-
-.akina-logo{
+.akina-logo {
     width: 5rem;
+}
+
+.btn-container {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    text-decoration: none;
+}
+
+.tech-stack:hover{
+    background-color: lightblue;
 }
