@@ -67,12 +67,10 @@
     position: relative;
 }
 
-a:hover {
-    color: #82caed;
-}
 
 .main {
     min-width: 600px;
+    height: 100vh;
 }
 
 .akina-logo {
@@ -89,3 +87,4 @@ a:hover {
 .tech-stack:hover{
     background-color: lightblue;
 }
+
