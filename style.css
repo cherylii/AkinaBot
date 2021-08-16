@@ -3,6 +3,7 @@
     font-family: Quicksand;
 }
 
+
 .blue {
     color: #82caed;
 }
@@ -101,4 +102,13 @@ a:hover {
 
 .medium {
     font-family: Quicksand Medium;
+}
+
+.main{
+    min-width: 600px;
+}
+
+
+.akina-logo{
+    width: 5rem;
 }
