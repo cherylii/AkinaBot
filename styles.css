@@ -66,13 +66,8 @@
     position: relative;
 }
 
-.main {
-    min-width: 600px;
-    height: 100vh;
-}
-
 .akina-logo {
-    width: 5rem;
+    width: 13rem;
 }
 
 .btn-container {
@@ -104,11 +99,29 @@ a:hover {
     font-family: Quicksand Medium;
 }
 
-.main{
-    min-width: 600px;
+.top-header {
+    font-size: 4rem;
 }
 
+.title-container {
+    flex-direction: column;
+}
 
-.akina-logo{
-    width: 7rem;
+.subtitle-text {
+    text-align: center;
+}
+
+@media (min-width:768px) {
+    .top-header {
+        font-size: 5rem;
+    }
+    .title-container {
+        flex-direction: row;
+    }
+    .akina-logo { 
+        width: 9em;
+    }
+    .subtitle-text {
+        text-align: left;
+    }
 }

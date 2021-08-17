@@ -16,31 +16,31 @@
 <body class='bg-blue'>
     <div class="container main shadow shadow-md border rounded-2 p-0">
         <section class='bg-red'>
-            <!-- Desktop Navbar -->
-            <ul class="nav d-none d-md-flex justify-content-md-end align-content-end">
+            <ul class="d-none d-md-flex nav row justify-content-md-between align-content-end">
                 <div class="col-md-6">
-                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Home</a></li>
+                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white'
+                        href='../index.html'>Home</a></li>
                 </div>
                 <div class="col-md-6 d-flex justify-content-md-end">
-                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='./html/docs.html'>Docs</a>
-                    </li>
+                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Docs</a></li>
                     <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>About</a></li>
                 </div>
-        
             </ul>
-            <!-- Mobile navbar -->
-            <ul class="nav d-md-none d-flex justify-content-md-center align-content-center">
-                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Home</a></li>
-                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='./html/docs.html'>Docs</a></li>
-                <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>About</a></li>
+            <ul class="d-md-none nav row align-content-end">
+                <div class="col-md-12 d-flex justify-content-around">
+                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white'
+                        href='../index.html'>Home</a></li>
+                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>Docs</a></li>
+                    <li class="btn nav-item p-3 mx-4"><a class='text-decoration-none white' href='#'>About</a></li>
+                </div>
             </ul>
         </section>
 
-        <header class='start-container bg-red white p-3'>
+        <header class='start-container bg-red white p-3 px-5'>
             <div class="text-center">
-                <div class='center-container'>
-                    <img class='rounded-circle img-fluid akina-logo' src="../assets/images/akina.png" alt="akina">
-                    <h1 class='font-weight-bolder white mx-3'>Akina's Documentation</h1>
+                <div class='center-container title-container'>
+                    <img class='rounded-circle img-fluid akina-logo my-3' src="../assets/images/akina.png" alt="akina">
+                    <h1 class='font-weight-bolder white mx-4' style="font-size: 3rem;">Akina's Features!</h1>
                 </div>
             </div>
         </header>
@@ -66,7 +66,7 @@
             </div>
 
             <div class="col-md-9 bg-white p-2">
-                <section class='p-3 scrollbar-hidden' data-spy="scroll" data-target=".navbar" data-offset="50" style="overflow-y: auto; height: 75vh; width: 100%;">
+                <section class='p-3 scrollbar-hidden mb-3' data-spy="scroll" data-target=".navbar" data-offset="50" style="overflow-y: auto; height: 75vh; width: 100%;">
                     <article id="introduction">
                         <h2>Introduction</h2>
                         <p>
@@ -139,13 +139,9 @@
                             reprehenderit iure nostrum consequuntur id aut.
                         </p>
                     </article>
-
                 </section>
             </div>
         </section>
-
-
-
 
     </div>
 
@@ -160,7 +156,6 @@
             <div class="col-md-4">
                 <ul class='list-unstyled'>
                     <a href="https://github.com/faythlii/AkinaBot" target='_blank' class='text-decoration-none'><li class='' style='font-size: 3rem; color: #000505;'><strong>AKINA Bot</strong></li></a>
-                    <li></li>
                 </ul>
             </div>
             <div class="col-md-4">
