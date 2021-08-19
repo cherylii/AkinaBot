@@ -29,7 +29,7 @@ module.exports = {
 				.setDescription(`**[${user.id.toString() === "776735927229087764" ? "Here's a link to see me even more clearly!" : "Here's a link to their avatar!"}](${user.displayAvatarURL({ dynamic: true })})**`)
 				.setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))
 				.setFooter(`${user.id.toString() === "776735927229087764" ? "Hehe, It's the cutest thing ever!" : "Isn't it beautifully pristine?"}`, user.displayAvatarURL({ dynamic: true }))
-			return message.channel.send({ content: `${ user.id.toString() === "776735927229087764" ? "*Hehe, you wish to see me more clearly? <3*" : ''}`, embeds: [avatarEmbed] });
+			return message.channel.send({ content: `${ user.id.toString() === "776735927229087764" ? "*Hehe, you wish to see me more clearly? <3*" : ' '}`, embeds: [avatarEmbed] });
 		}
 		if (message.mentions.users.size > 1 && message.mentions.users.size < 11) {
 			avatarEmbed = new Discord.MessageEmbed()
