@@ -12,7 +12,7 @@ module.exports = {
 	guildOnly: false,
 	execute(client, message, args, currency, category, distube, tmpMsg) {
 
-		if ((message.mentions.users.size == 1) || args[0].match(/^\d{18}$/)) {
+		if ((message.mentions.users.size == 1) || (args[0] && args[0].match(/^\d{18}$/))) {
 			let user = message.mentions.users.first() || client.users.cache.get(args[0])
 			avatarEmbed = new Discord.MessageEmbed()
 				.setColor(colorHex)
