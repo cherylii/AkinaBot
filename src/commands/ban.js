@@ -4,7 +4,7 @@ const { Permissions } = require('discord.js');
 module.exports = {
     name: "ban",
     aliases: [],
-    description: "Bans a member from the server, rule violators arn't welcome.",
+    description: "Bans a member from the server, rule violators aren't welcome!",
     usage: { "[\@user]": "User that you want to ban" },
     subcommands: {},
     category: "Moderation",

@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: "kick",
     aliases: [],
-    description: "Kicks a member from the server, A good warning for them.",
+    description: "Kicks a member from the server, A good warning for them!",
     usage: { "[\@user]": "User that you want to kick" },
     subcommands: {},
     category: "Moderation",
