@@ -4,6 +4,8 @@
 
 #dependencies
 src/node_modules/
+src/database/
 
 #secrets
 src/database/model/databaseConfig.js
+

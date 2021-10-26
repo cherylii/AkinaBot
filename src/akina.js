@@ -10,7 +10,7 @@ require('dotenv').config()
 
 
 const { prefix, colorHex, ownerId } = require('./config.json');
-const userDB = require('./database/model/user');
+// const userDB = require('./database/model/user');
 
 const client = new Discord.Client({ 
     allowedMentions: { parse: ['users', 'roles', 'everyone'], 
@@ -67,9 +67,9 @@ for (const file of commandFiles) {
     category.set(command.category, commandsNames);
 }
 
-userDB.getUser(null, (error, result) => {
-    error ? console.log(error) : result.forEach(user => { currency.set(parseInt(user.userid), { star: user.star, rep: user.rep, exp: user.exp }); console.log(currency)})
-})
+// userDB.getUser(null, (error, result) => {
+//     error ? console.log(error) : result.forEach(user => { currency.set(parseInt(user.userid), { star: user.star, rep: user.rep, exp: user.exp }); console.log(currency)})
+// })
 
 client.on('ready', async () => {
     console.log("It's lunatic tiiime!!")
