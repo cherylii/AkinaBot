@@ -6,8 +6,8 @@ const DisTube = require('distube')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require('@distube/spotify')
 const { Intents } = require('discord.js')
-const dotenv = require('dotenv')
-dotenv.config()
+require('dotenv').config()
+
 
 const { prefix, colorHex, ownerId } = require('./config.json');
 const userDB = require('./database/model/user');
@@ -56,7 +56,7 @@ const infoButton = new Discord.MessageButton({
     customId: 'info'
 })
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('src/commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
@@ -295,4 +295,4 @@ distube
         queue.textChannel.send({ embeds: [finishEmbed] })
     })
 
-client.login(process.env.token);
+client.login(process.env.TOKEN);

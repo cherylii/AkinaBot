@@ -2,10 +2,10 @@
   "name": "akina",
   "version": "1.0.0",
   "description": "",
-  "main": "akina.js",
+  "main": "src/akina.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node akina.js"
+    "start": "node src/akina.js"
   },
   "keywords": [],
   "author": "",
