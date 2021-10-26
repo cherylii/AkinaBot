@@ -6,10 +6,18 @@ const DisTube = require('distube')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require('@distube/spotify')
 const { Intents } = require('discord.js')
+const dotenv = require('dotenv')
+dotenv.config()
 
-const { prefix, token, colorHex } = require('./config.json');
+const { prefix, colorHex, ownerId } = require('./config.json');
+const userDB = require('./database/model/user');
 
-const client = new Discord.Client({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES] });
+const client = new Discord.Client({ 
+    allowedMentions: { parse: ['users', 'roles', 'everyone'], 
+    repliedUser: true }, 
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]
+ });
+
 client.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const currency = new Discord.Collection();
@@ -21,8 +29,7 @@ const distube = new DisTube.default(client, {
     emitNewSongOnly: false,
     leaveOnEmpty: true,
     leaveOnFinish: true,
-    emptyCooldown: 0,
-    leaveOnFinish: true,
+    emptyCooldown: 60,
     leaveOnStop: true,
     emitAddSongWhenCreatingQueue: true,
     emitAddListWhenCreatingQueue: true,
@@ -60,14 +67,15 @@ for (const file of commandFiles) {
     category.set(command.category, commandsNames);
 }
 
+userDB.getUser(null, (error, result) => {
+    error ? console.log(error) : result.forEach(user => { currency.set(parseInt(user.userid), { star: user.star, rep: user.rep, exp: user.exp }); console.log(currency)})
+})
+
 client.on('ready', async () => {
-    console.log("Kyahahahaha!")
+    console.log("It's lunatic tiiime!!")
 
     const guildId = client.guilds.cache.map(guild => guild.id)
     guildId.forEach(g => tmpMsg.set(g, null))
-
-    // const storedBalances = await Users.findAll();
-    // storedBalances.forEach(b => currency.set(b.user_id, b));
 
     const activity = require('../assets/texts/activity.json');
     const activityIndex = Math.floor(Math.random() * (activity['activity'].length - 1) + 1);
@@ -77,6 +85,7 @@ client.on('ready', async () => {
         var activityIndex = Math.floor(Math.random() * (activity['activity'].length - 1) + 1);
         client.user.setActivity(`a!help | ${activity['activity'][activityIndex]['activity']} | [${activity['activity'][activityIndex]['number']}]`, { type: 'LISTENING' });
     }, 2400000);
+
 });
 
 client.on('messageCreate', message => {
@@ -88,7 +97,11 @@ client.on('messageCreate', async message => {
     // console.log(`${message.author.id}: ${message.content}`);
 
     const args = message.content.slice(prefix.length).trim().split(/ +/); //args = array
-    if (args[0] === '' || message.content === '<@!776735927229087764>') return message.channel.send(`**Hiii ${message.author.tag}, did you call me? I'm Akina!**\nDo \`a! help\` to see what I can do!\nDo \`a! prefix\` to set a guild-wide prefix!`);
+
+    //unlisted commands
+    if (message.content === '<@!776735927229087764>') return message.channel.send(`**Konnichiwa ${message.author.tag}! I'm Akina!**\nDo \`a! help\` to see what I can do!\nDo \`a! prefix\` to set a guild-wide prefix!`);
+    if (message.author.id === ownerId && args[0] === 'clientrestart') return message.channel.send(`**Restarting client :)**`).then(() => {process.exit()})
+    
     const commandName = args.shift().toLowerCase(); //pulls out the first thing after the prefix: command name
 
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName) && cmd.aliases != "");
@@ -137,6 +150,7 @@ client.on('messageCreate', async message => {
     timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
+    command.category === 'Currency' && currency
     try {
         command.execute(client, message, args, currency, category, distube, tmpMsg);
     }
@@ -144,9 +158,12 @@ client.on('messageCreate', async message => {
         console.error(error);
         message.reply({ content: ':x: **I-I failed to execute that command...**', allowedMentions: { repliedUser: false } });
     }
-});
+})
 
 distube
+    .on("initQueue", queue => {
+        queue.textChannel.send({content: `:white_check_mark: Successfully created queue in channels ${queue.voice.voiceState.channel.toString()} and ${queue.textChannel.toString()}!**`})
+    })
     .on("playSong", (queue, song) => {
         distube.voices.get(queue.textChannel.guild.id).setSelfDeaf(true)
         const playSongEmbed = new Discord.MessageEmbed()
@@ -193,7 +210,6 @@ distube
             }
         }
         queue.textChannel.send({ embeds: [generateEmbed(-1)], components: [new Discord.MessageActionRow({ components: [infoButton] })] }).then(message => {
-            setTimeout(() => message.delete(), 60000)
             if (playlist.songs.length <= listed) return;
 
             const collector = message.createMessageComponentCollector({
@@ -262,7 +278,7 @@ distube
     })
     .on("empty", queue => {
         const emptyEmbed = new Discord.MessageEmbed()
-            .setAuthor('Left the voice channel by inactivity', message.guild.me.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor('Left the voice channel by inactivity', client.user.displayAvatarURL({ dynamic: true }))
             .setColor(colorHex)
             .setDescription(`:sparkles: *It's sparklingly empty in here...* \n:notes: *Hope you enjoyed the music!* \n:wave: *See you again another time~*`)
         queue.textChannel.send({ embeds: [emptyEmbed] })
@@ -279,4 +295,4 @@ distube
         queue.textChannel.send({ embeds: [finishEmbed] })
     })
 
-client.login(token);
+client.login(process.env.token);

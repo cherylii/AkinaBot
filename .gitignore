@@ -1,5 +1,6 @@
 #utilities
 .vscode
+*.env
 
 #dependencies
 src/node_modules/
