@@ -1,1 +1,1 @@
-Worker: node src/akina.js
+worker: node src/akina.js
