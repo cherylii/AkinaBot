@@ -16,7 +16,7 @@ module.exports = {
         const kickName = kickArgs.shift().toLowerCase();  //messy code
         const kickPlayer = kickArgs.shift().toLowerCase();
         const messageAuthor = message.author;
-        if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to kick members!\nRequires `KICK\_MEMBERS`");
+        if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS, true) && message.member.id != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to kick members!\nRequires `KICK\_MEMBERS`");
         let user = message.guild.members.cache.get(message.mentions.users.first().id);
         let kickReason = message.content.slice(prefix.length + kickName.length + kickPlayer.length + 3);
         if (!(message.member.roles.highest.position > user.roles.highest.position)) return message.channel.send(":x: You do not have permissions to kick this member!\nRole hierarchy same or lower!")

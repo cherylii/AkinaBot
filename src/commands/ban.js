@@ -18,7 +18,7 @@ module.exports = {
         const banPlayer = banArgs.shift().toLowerCase();
         const messageAuthor = message.author;
 
-        if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS, true) && message.member != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to ban members!\nRequires `BAN\_MEMBERS`");
+        if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS, true) && message.member.id != message.guild.ownerId) return message.channel.send(":x: You do not have permissions to ban members!\nRequires `BAN\_MEMBERS`");
         let user = message.guild.members.cache.get(message.mentions.users.first().id);
         let banReason = message.content.slice(prefix.length + banName.length + banPlayer.length + 3);
         if (!(message.member.roles.highest.position > user.roles.highest.position)) return message.channel.send(":x: You do not have permissions to kick this member!\nRole hierarchy same or lower!")
