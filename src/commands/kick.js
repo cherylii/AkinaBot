@@ -10,7 +10,7 @@ module.exports = {
     category: "Moderation",
     args: true,
     cooldown: 5,
-    guildOnly: true,
+    guildOnly: false,
     execute(client, message, args, currency, category, distube, tmpMsg) {
         const kickArgs = message.content.slice(prefix.length).trim().split(/ +/); //args = array
         const kickName = kickArgs.shift().toLowerCase();  //messy code
